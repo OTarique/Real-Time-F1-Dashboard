@@ -1,11 +1,7 @@
 import asyncio
-import json
 import logging
-import pandas as pd
 from signalr_async.net import Hub
 from signalr_async.net.client import SignalRClient
-
-import time  # to simulate a real time data, time loop
 
 import numpy as np  # np mean, np random
 import pandas as pd  # read csv, df manipulation
@@ -28,14 +24,7 @@ placeholder = st.empty()
 logging.basicConfig(level=logging.DEBUG)
 
 scoreboard = {}
-# session_info ={}
-# driver_list = {}
-# timing = {}
-# rc_messages = {}
-# current_tyres = {}
-# lap_count = {}
-# weather_data = {}
-# track_status = {}
+
 
 df_main = pd.DataFrame()
 
@@ -43,12 +32,9 @@ df_info_data = ["Start"]
 df_info = pd.DataFrame(df_info_data,columns=["Action"])
 df_info = df_info.sort_index(ascending=False)
 
-# df_rc_data = [["Start",'Start','Start','Start']]
-# df_rc = pd.DataFrame(df_rc_data,columns=['Time','Category','Flag','Message'])
 df_rc = pd.DataFrame()
 catching_prev = False
 InPit_prev = False
-# df_prev = pd.DataFrame(columns=['Position','Catching','InPit'],index=range(100))
 df_pos = pd.DataFrame(columns=['Action'])
 
 class F1SignalRClient(SignalRClient):
@@ -60,9 +46,7 @@ class F1SignalRClient(SignalRClient):
     lap_count = {}
     weather_data = {}
     track_status = {}
-    # pos_prev = ""
     
-
     
 
     def TrackStatus(self,trackStatus):
