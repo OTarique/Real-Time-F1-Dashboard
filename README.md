@@ -9,4 +9,4 @@ Below is video of the dashboard in action:
 [video.webm](https://github.com/OTarique/Real-Time-F1-Dashboard/assets/73628289/721d68db-5221-4ce2-b902-a874abe9784f)
 
 
-I have created a data dictionary that outlines the available endpoints of the live-timing data. This will allow you to adapt the dashboard to your liking. I am still working on finding ways to enrich the information displayed and also making the code cleaner plus efficient to run.
+I am working on creating list of available endpoints of the live-timing data as well as its associated simple data dictionary. This will allow you to adapt the dashboard to your liking. Morever, I am still working on finding ways to enrich the information displayed as well as making the code cleaner plus efficient to run.
