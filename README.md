@@ -6,9 +6,7 @@ The initial script that communicates with the live-timing SignalR server was tak
 
 Below is video of the dashboard in action:
 
-
-
-
+[video.webm](https://github.com/OTarique/Real-Time-F1-Dashboard/assets/73628289/721d68db-5221-4ce2-b902-a874abe9784f)
 
 
 
