@@ -133,12 +133,12 @@ class F1SignalRClient(SignalRClient):
                 position_data_driver = driver['LastName']
                 position_data = [[position_data_driver, pos]]
                 position_data_test = position_data_driver in df_pos['Action'].values
-
+                InPit = driver_timing['InPit']
                 if position_data_test == False:
                     position_catch = pd.DataFrame(position_data, columns=["Action","Position"])
                     df_pos = pd.concat([df_pos,position_catch],ignore_index=True)
                 
-                elif int(df_pos.loc[df_pos['Action'] == position_data_driver]['Position'].values[0]) < int(pos):
+                elif int(df_pos.loc[df_pos['Action'] == position_data_driver]['Position'].values[0]) < int(pos) and InPit !=True:
                     for driverno in self.timing_data['Lines']:
                         if self.timing_data["Lines"][driverno]['Position'] == str(int(pos)-1):
                             p_driver = self.driver_list[driverno]['LastName']
@@ -146,12 +146,12 @@ class F1SignalRClient(SignalRClient):
                         else:
                             p_driver = ""
                     
-                    pos_data = [driver['LastName'] + " has overtaken position " + str(int(pos)-1) + " " + p_driver]
+                    pos_data = [p_driver + " has overtaken " + driver['LastName'] + " for position " + str(int(pos)-1)]
                     pos_data_catch = pd.DataFrame(pos_data, columns=["Action"])
                     df_info = pd.concat([df_info,pos_data_catch],ignore_index=True)
-                    df_pos[position_data_driver]['Position'] = pos
+                    df_pos.loc[df_pos['Action'] == position_data_driver,'Position'] = pos
 
-                InPit = driver_timing['InPit']
+                
                 if driver_timing['GapToLeader'] == "" and InPit != True:  # race
                     gap = "OUT"
                     retired_data = [driver['Tla']+" is OUT!"]
